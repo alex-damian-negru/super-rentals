@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-
 export default Route.extend({
   model() {
     return [{
@@ -10,7 +9,7 @@ export default Route.extend({
       category: 'Estate',
       bedrooms: 15,
       image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg',
-      description: 'This grand old mansion sits on over 100 acres of rolling hills and dense redwood forests'
+      description: 'This grand old mansion sits on over 100 acres of rolling hills and dense redwood forests.'
     }, {
       id: 'urban-living',
       title: 'Urban Living',
