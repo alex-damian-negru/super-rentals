@@ -26,5 +26,8 @@ module('Unit | Service | map-element', function(hooks) {
     }
 
     let mapService = this.owner.factoryFor('service:map-element').create({ map: stubMapService, geocode: stubGeocodeService });
+    let element = await mapService.getMapElement('San Francisco');
+    
+    assert.deepEqual(element, DUMMY_ELEMENT, 'element fetched from cache');
   });  
 });
