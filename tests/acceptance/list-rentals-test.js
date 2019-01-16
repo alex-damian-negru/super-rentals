@@ -68,6 +68,11 @@ module('Acceptance | list rentals', function(hooks) {
     assert.ok(this.element.querySelector('.listing .location').textContent.includes('Seattle'), 'contains 1 listing with location Seattle');
   });
 
-  test('show details for a selected rental', async function(assert) {
+  test('shows details for a selected rental', async function(assert) {
+    await visit('/rentals');
+    await click('.grand-old-mansion');
+    assert.equal(currentURL(), '/rentals/grand-old-mansion', 'navigates to show route');
+    assert.ok(this.element.querySelector('.show-listing h2').textContent.includes('Grand Old Mansion'), 'should list rental title');
+    assert.ok(this.element.querySelector('.show-listing .description'), 'lists a description of the property');
   });
 });
