@@ -22,10 +22,10 @@ module('Integration | Component | location-map', function(hooks) {
     this.mapsService = this.owner.lookup('service:map-element');
   })
 
-  test('should append map element to container element', async function(assert) {
+  test('appends map element to container element', async function(assert) {
     this.set('myLocation', 'New York');
     await render(hbs`{{location-map location=myLocation}}`);
     assert.ok(this.element.querySelector('.map-container > .map'), 'container has map child');
-    assert.equal(this.get('mapsService.caledWithLocation'), 'New York', 'cals service with New York');
+    assert.equal(this.get('mapsService.calledWithLocation'), 'New York', 'calls service with New York');
   });
 });

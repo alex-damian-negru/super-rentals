@@ -28,6 +28,17 @@ module('Unit | Service | map-element', function(hooks) {
     let mapService = this.owner.factoryFor('service:map-element').create({ map: stubMapService, geocode: stubGeocodeService });
     let element = await mapService.getMapElement('San Francisco');
     
+    assert.ok(element, 'element exists');
+    assert.equal(element.className, 'map', 'element has class name of map');
+  });
+  
+  test('uses existing map if one is cached for location', async function(assert) {
+    assert.expect(1);
+    
+    let stubCachedMaps = { sanFrancisco: DUMMY_ELEMENT };
+    let mapService = this.owner.factoryFor('service:map-element').create({ cachedMaps: stubCachedMaps });
+    let element = await mapService.getMapElement('San Francisco');
+    
     assert.deepEqual(element, DUMMY_ELEMENT, 'element fetched from cache');
-  });  
+  });
 });
